@@ -8,7 +8,7 @@
         logo: '#logo',
         tables: '#tables',
 
-        ordem: ["Entrada", "Caldinho", "Bebidas", "Cervejas"]
+        ordem: ["Entrada", "Caldinho", "Bebidas", "Cervejas", "Vinhos"]
     }
 
     const settings = {}
@@ -41,12 +41,12 @@
 
         var div = document.createElement('div')
         var titulo = document.createElement('h3')
-        div.className = 'box2'
+        div.className = 'box1'
         titulo.innerHTML = defaults.ordem[0]
         div.appendChild(titulo)
         for (var i in data) {
             if (data[i]["category"] == defaults.ordem[0]) {
-                if (data[i]["status"] == "s") {
+                if (data[i]["status"]) {
                     var product = document.createElement('p')
                     var price = document.createElement('b')
                     var hr = document.createElement('hr')
@@ -86,7 +86,7 @@
         div.appendChild(titulo)
         for (var i in data) {
             if (data[i]["category"] == defaults.ordem[1]) {
-                if (data[i]["status"] == "s") {
+                if (data[i]["status"]) {
                     var product = document.createElement('p')
                     var price = document.createElement('b')
                     var hr = document.createElement('hr')
@@ -126,7 +126,7 @@
         div.appendChild(titulo)
         for (var i in data) {
             if (data[i]["category"] == defaults.ordem[2]) {
-                if (data[i]["status"] == "s") {
+                if (data[i]["status"]) {
                     var product = document.createElement('p')
                     var price = document.createElement('b')
                     var hr = document.createElement('hr')
@@ -161,12 +161,53 @@
 
         var div = document.createElement('div')
         var titulo = document.createElement('h3')
-        div.className = 'box1'
+        div.className = 'box2'
         titulo.innerHTML = defaults.ordem[3]
         div.appendChild(titulo)
         for (var i in data) {
             if (data[i]["category"] == defaults.ordem[3]) {
-                if (data[i]["status"] == "s") {
+                if (data[i]["status"]) {
+                    var product = document.createElement('p')
+                    var price = document.createElement('b')
+                    var hr = document.createElement('hr')
+                    price.className = 'float-right'
+
+                    if (data[i]["desc"] != "") {
+                        var desc = document.createElement('p')
+                        desc.className = 'desc'
+
+                        product.innerHTML = data[i]["product"]
+                        price.innerHTML = 'R$ ' + data[i]["price"].toFixed(2).replace('.', ',')
+                        desc.innerHTML = data[i]["desc"]
+
+                        product.appendChild(price)
+                        div.appendChild(product)
+                        div.appendChild(desc)
+                        div.appendChild(hr)
+                    } else {
+                        product.innerHTML = data[i]["product"]
+                        price.innerHTML = 'R$ ' + data[i]["price"].toFixed(2).replace('.', ',')
+
+                        product.appendChild(price)
+                        div.appendChild(product)
+                        div.appendChild(hr)
+                    }
+
+                }
+            }
+        }
+        div.removeChild(hr)
+        settings.tables.appendChild(div)
+
+
+        var div = document.createElement('div')
+        var titulo = document.createElement('h3')
+        div.className = 'box1'
+        titulo.innerHTML = defaults.ordem[4]
+        div.appendChild(titulo)
+        for (var i in data) {
+            if (data[i]["category"] == defaults.ordem[4]) {
+                if (data[i]["status"]) {
                     var product = document.createElement('p')
                     var price = document.createElement('b')
                     var hr = document.createElement('hr')
